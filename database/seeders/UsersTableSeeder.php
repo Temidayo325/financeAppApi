@@ -6,6 +6,11 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
+use App\Models\User;
+use App\Models\Expenses;
+
+use Illuminate\Database\Eloquent\Factories\Sequence;
+
 class UsersTableSeeder extends Seeder
 {
     /**
@@ -15,25 +20,18 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+
         DB::table('users')->delete();
-   //      $users = [
-   //      	[
-	  //       	'name' => "Opeyemi Emmanuel",
-	  //       	'email' => "temi325@gmail.com",
-	  //       	"password" => Hash::make('zarachikempachi')
-   //      	],
-   //      	[
-	  //       	'name' => "Aniyi Johnson",
-	  //       	'email' => "hollalere@gmail.com",
-	  //       	"password" => Hash::make('johnson')
-	  //       ],
-			// [
-	  //       	'name' => "Omisola Idowu",
-	  //       	'email' => "idowu@gmail.com",
-	  //       	"password" => Hash::make('omisola')
-	  //       ]
-   //  	];
-   //  	DB::table('users')->insert($users);
+
+        User::factory()
+              ->count(100)
+              // ->state(new Sequence(
+              //     ['category_id' => 1],
+              //     ['category_id' => 2],
+              //     ['category_id' => 3],
+              //     ['category_id' => 4]
+              //   ))
+              ->hasExpenses(10)
+              ->create();
     }
 }
