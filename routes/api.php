@@ -29,4 +29,4 @@ Route::post("register", [UserController::class, 'register']);
 
 Route::post("create", [ExpenseController::class, 'create']);
 
-Route::post("read", [ExpenseController::class, 'read']);
+Route::post("sortByTimelineFromNow", [ExpenseController::class, 'sortByTimelineFromNow']);

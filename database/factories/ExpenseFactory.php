@@ -25,7 +25,7 @@ class ExpenseFactory extends Factory
         return [
             'amount' => $this->faker->randomNumber(5, false),
             'user_token' => Str::random(10),
-            'category_id' => $this->faker->numberBetween(1, 6)
+            'category_id' => $this->faker->numberBetween(1, 14)
         ];
     }
 

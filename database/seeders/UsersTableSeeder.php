@@ -25,13 +25,7 @@ class UsersTableSeeder extends Seeder
 
         User::factory()
               ->count(100)
-              // ->state(new Sequence(
-              //     ['category_id' => 1],
-              //     ['category_id' => 2],
-              //     ['category_id' => 3],
-              //     ['category_id' => 4]
-              //   ))
-              ->hasExpenses(10)
+              ->hasExpenses(200)
               ->create();
     }
 }
