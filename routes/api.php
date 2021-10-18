@@ -29,4 +29,5 @@ Route::post("register", [UserController::class, 'register']);
 
 Route::post("create", [ExpenseController::class, 'create']);
 
-Route::post("sortByTimelineFromNow", [ExpenseController::class, 'sortByTimelineFromNow']);
+Route::post("sortByDateBetweenNowAndDate", [ExpenseController::class, 'sortByDateBetweenNowAndDate']);
+Route::post("sortbetweenTwoDates", [ExpenseController::class, 'sortbetweenTwoDates']);

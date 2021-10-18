@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Listeners;
+
+use App\Events\UserRegistered;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+
+use App\Templates\Verify;
+use App\Services\Sms;
+use App\Services\Email;
+
+class SendBothVerification
+{
+    /**
+     * Create the event listener.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //
+    }
+
+    /**
+     * Handle the event.
+     *
+     * @param  UserRegistered  $event
+     * @return void
+     */
+    public function handle(UserRegistered $event)
+    {
+      //Send SMS
+      $smsMessage = "Welcome to the ExpenseX platform! Verify your number to proceed, verification code is ";
+      Sms::send($event->user->phone, $smsMessage);
+
+      //Send Email
+      $verificationEmail = Verify::boot($event->user);
+       Email::sendHTML($event->user->email, $verificationEmail);
+    }
+}

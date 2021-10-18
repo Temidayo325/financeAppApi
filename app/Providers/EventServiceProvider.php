@@ -7,6 +7,10 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 
+use App\Events\UserRegistered;
+use App\Listeners\SendWelcomeNotification;
+use App\Listeners\SendBothVerification;
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -18,6 +22,11 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+
+        UserRegistered::class => [
+           SendWelcomeNotification::class,
+           SendBothVerification::class
+        ]
     ];
 
     /**

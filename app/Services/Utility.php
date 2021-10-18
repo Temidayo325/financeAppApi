@@ -1,20 +1,20 @@
-<?php 
+<?php
 
 namespace App\Services;
 
 use Illuminate\Support\Facades\Schema;
 /**
- * 
+ *
  */
 class Utility
 {
-	
+
 		public static function generator($length = 20)
 		{
 			$char = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 			$random = '';
 
-			for ($i=0; $i < $length; $i++) { 
+			for ($i=0; $i < $length; $i++) {
 				# code...
 				$index = rand(0, strlen($char) - 1);
 				$random .=$char[$index];
@@ -22,6 +22,18 @@ class Utility
 			return $random;
 		}
 
+		public static function generateInteger($length = 6)
+		{
+			$char = '0123456789';
+			$random = '';
+
+			for ($i=0; $i < $length; $i++) {
+				# code...
+				$index = rand(0, strlen($char) - 1);
+				$random .=$char[$index];
+			}
+			return $random;
+		}
 		public function download_file($filepath)
 			{
 				if(file_exists($filepath)) {
@@ -41,8 +53,8 @@ class Utility
 				        die();
 			        }
 			}
-		/*	
-			param {format} => the format to display the difference which can be in days(%D), months 
+		/*
+			param {format} => the format to display the difference which can be in days(%D), months
 		*/
 		public function calcDateDifference($first, $second, $format)
 		{

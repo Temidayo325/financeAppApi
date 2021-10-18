@@ -26,6 +26,7 @@ class UsersTableSeeder extends Seeder
         User::factory()
               ->count(100)
               ->hasExpenses(200)
+              ->hasVerifications()
               ->create();
     }
 }

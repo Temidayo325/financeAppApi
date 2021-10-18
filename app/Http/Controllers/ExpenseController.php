@@ -75,30 +75,56 @@ class ExpenseController extends Controller
         ]);
     }
 
-    public function sortByTimelineFromNow(Request $request)
+    public function sortByDateBetweenNowAndDate(Request $request)
     {
         $check = $request->validate([
             'user_id' => 'required|string|max:10|min:10',
-            'category' => 'required|max:1|min:1',
-            'date' => 'required'
+            'date' => 'required|date'
         ]);
-        $date = new Carbon($request->date);
+           $date = new Carbon($request->date);
+           $check = Expense::select('category_id', 'amount','created_at')
+           ->where('user_token', $request->user_id)
+           ->whereBetween('created_at', [$date, Carbon::now()])
+           ->orderBy('category_id')
+           ->get()
+           ->map(function ($item){
+           	return [
+                 'category_id' => $item->category_id,
+                 'amount' => $item->amount,
+                 'created' => Carbon::parse($item->created_at)->diffForHumans(),
+               ];
+           });
+
+           return response()->json([
+             'data' => $check
+           ]);
+    }
+
+    public function sortbetweenTwoDates(Request $request)
+    {
+         $check = $request->validate([
+             'user_id' => 'required|string|max:10|min:10',
+             'date1' => 'required|date',
+             'date2' => 'required|date'
+         ]);
+
+        $date = new Carbon($request->date1   );
+        $date2 = new Carbon($request->date2);
         $check = Expense::select('category_id', 'amount','created_at')
-        ->where('user_token', 'ce7ajg9tus')
-        ->whereBetween('created_at', [$date, Carbon::now()])
+        ->where('user_token', $request->user_id)
+        ->whereBetween('created_at', [$date, $date2])
         ->orderBy('category_id')
-      	->get()
+        ->get()
         ->map(function ($item){
-        	return [
-              'category_id' => $item->category_id,
-              'amount' => $item->amount,
-              'created' => Carbon::parse($item->created_at)->diffForHumans(),
-            ];
+          return [
+               'category_id' => $item->category_id,
+               'amount' => $item->amount,
+               'created' => Carbon::parse($item->created_at)->diffForHumans(),
+             ];
         });
 
         return response()->json([
           'data' => $check
         ]);
-
-    }
+   }
 }

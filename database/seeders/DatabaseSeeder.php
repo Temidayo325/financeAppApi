@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CategorySeeder::class,
             ExpensesTableSeeder::class,
-            UsersTableSeeder::class
+            UsersTableSeeder::class,
+            VerificationstableSeeder::class
           ]);
     }
 }
