@@ -8,8 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Verification;
-
-class User extends Authenticatable
+use Tymon\JWTAuth\Contracts\JWTSubject;
+class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -24,7 +24,8 @@ class User extends Authenticatable
         'password',
         'user_token',
         'phone',
-        'verifyCode'
+        'verifyCode',
+        'gender'
     ];
 
     /**
@@ -51,8 +52,21 @@ class User extends Authenticatable
       return $this->hasMany(Expense::class, 'user_token', 'user_token');
     }
 
-    public function verifications()
+    public function verification()
     {
       return $this->hasOne(Verification::class, 'user_token', 'user_token');
+    }
+
+   public function authorizations()
+   {
+      return $this->hasOne(Authorization::class, 'user_token', 'user_token');
    }
+
+   public function getJWTIdentifier() {
+      return $this->getKey();
+   }
+
+   public function getJWTCustomClaims() {
+        return [];
+    }
 }

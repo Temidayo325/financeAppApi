@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Database\Seeders\CategorySeeder;
+use Database\Seeders\BanksTableSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,9 +18,10 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call([
             CategorySeeder::class,
-            ExpensesTableSeeder::class,
-            UsersTableSeeder::class,
-            VerificationstableSeeder::class
+            // ExpensesTableSeeder::class,
+            // UsersTableSeeder::class,
+            // VerificationstableSeeder::class,
+            BanksTableSeeder::class
           ]);
     }
 }

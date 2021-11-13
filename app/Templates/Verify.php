@@ -165,7 +165,7 @@ class Verify
                                           <tr>
                                             <td valign="top" class="edtext" style="text-align: left; color: #5f5f5f; font-size: 14px; font-family: &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; word-break: break-word; direction: ltr; box-sizing: border-box;">
                                               <p class="text-center" style="margin: 0px; padding: 0px 20px; line-height:1.7;">Yo ' . $user->name . '!,
-                                                <br> You are welcome to ExpenseX once again. Kindly use this code to verify your account
+                                                <br> You are almost ready to go. Kindly use this code to verify your account
                                                 <br> The verification code is '.$user->verifyCode. '
                                                 <br> This is gon be lit.
                                               </p>

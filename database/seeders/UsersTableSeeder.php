@@ -24,9 +24,9 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->delete();
 
         User::factory()
-              ->count(100)
-              ->hasExpenses(200)
-              ->hasVerifications()
+              ->count(20)
+              ->hasExpenses(100)
+              ->hasVerification()
               ->create();
     }
 }
