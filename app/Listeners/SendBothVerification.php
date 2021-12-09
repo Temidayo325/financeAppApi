@@ -30,12 +30,13 @@ class SendBothVerification
      */
     public function handle(UserRegistered $event)
     {
-      //Send SMS
-      $smsMessage = "Welcome to the ExpenseX platform! Verify your number to proceed, verification code is ";
-      Sms::send($event->user->phone, $smsMessage);
 
       //Send Email
       $verificationEmail = Verify::boot($event->user);
-       Email::sendHTML($event->user->email, $verificationEmail);
+      Email::sendHTML($event->user->email, $verificationEmail);
+
+      //Send SMS
+     $smsMessage = "Welcome to the ExpenseX platform! Your verification code is ".$event->user->verifyCode;
+     Sms::send($event->user->phone, $smsMessage);
     }
 }

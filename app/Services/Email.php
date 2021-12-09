@@ -38,10 +38,10 @@ class Email
     {
       $response = Http::retry(3, 1000)->asForm()->post(config('elastic.mail.send_url'), [
                   'apikey' => config('elastic.mail.api_key'),
-                  'subject' => 'Welcome to Codezilla Bootcamp',
+                  'subject' => 'Welcome to ExpenseX',
                   'bodyHtml' => $htmlMessage,
                   'from' => 'Opeyemi@lumina.com.ng',
-                  'fromName' => 'Kelvin from Codezilla',
+                  'fromName' => 'Kelvin from ExpenseX',
                   'to' => $email,
       ]);
       return $response->body();

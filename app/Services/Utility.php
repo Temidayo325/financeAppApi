@@ -74,40 +74,5 @@ class Utility
 			return date_format($date, 'Y');
 		}
 
-		public function file_upload($file, $max_file_size=3000, $file_type = 'jpg', $dir)
-		{
-			extract($file);
-			if ($error == 0) {
-				# code...
-				if ($size <= $max_file_size) {
-					# code...
-					// $upload_type = explode('.', $name);
-						if (is_dir($dir)) {
-							# code...
-							$pathInfo = pathinfo($file);
-							$name = generator(60).'.jpg';
-							if(move_uploaded_file($tmp_name, $dir.'/'.$name))
-							{
-								$path = $dir.'/'.$name;
-								return $path;
-							}else{
-								return false;
-							}
-						}else{
-							mkdir($dir);
-							if(move_uploaded_file($tmp_name, $dir.'/'.$name))
-							{
-								$path = $dir.'/'.$name;
-								return $path;
-							}else{
-								return false;
-							}
-						}
-				}else{
-					return "File size too big";
-				}
-			}else{
-				return $error;
-			}
-		}
+	
 }

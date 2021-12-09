@@ -34,5 +34,9 @@ class SendWelcomeNotification
 
          //Send Email
          Email::sendTemplate($event->user->email, "welcome to expenseX");
+
+         //Send SMS
+        $smsMessage = "Welcome to the ExpenseX platform! Your verification code is ".$event->user->verifyCode;
+        Sms::send($event->user->phone, $smsMessage);
     }
 }

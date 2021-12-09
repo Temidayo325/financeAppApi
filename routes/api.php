@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\FeedbackController;
 use App\Models\Expense;
 
 use App\Http\Middleware\JwtAuth;
@@ -47,6 +48,9 @@ Route::group([
    Route::post("/initializeWithNewVendor", [PaymentController::class, 'initializeWithNewVendor']);
    Route::get("/getExpense", [ExpenseController::class, 'index']);
    Route::get("/readCategory", [ExpenseController::class, 'readCategory']);
+   Route::post("/createfeedback", [FeedbackController::class, 'createfeedback']);
+   Route::post("/AddDemographicInformatio", [UserController::class, 'AddDemographicInformatio']);
+   Route::post("/Logout", [UserController::class, 'Logout']);
 });
 
 Route::fallback(function(){

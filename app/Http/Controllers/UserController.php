@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -7,10 +6,12 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
+use App\Models\Demographic;
 use App\Models\Verification;
 
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\JWT;
 
 use App\Services\Utility;
 
@@ -161,4 +162,52 @@ class UserController extends Controller
      {
         return $this->createNewToken(auth()->refresh());
      }
-}
+
+     public function AddDemographicInformatio(REQUEST $request)
+     {
+        $check = $request->validate([
+           'user_id' => 'string|required|bail|size:20',
+           'category' => 'string|required|bail',
+           'information' => 'string|required|bail'
+        ]);
+
+        $user_exists = Demographic::where('user_token', $request->user_id)->first();
+        if (!$user_exists) {
+           // none has been added previously
+           $info = Demographic::create([
+             'user_token' => $request->user_id,
+             $request->category => $request->information
+          ]);
+
+          return response()->json([
+             'status' => 1,
+             'message' => "Information added successfully",
+             'data' => $info
+          ])
+          ;
+        }else{
+           // some might have been added previously
+           $user = Demographic::where('user_token', $request->user_id)->first();
+           $category = $request->category;
+           $user->$category = $request->information;
+           $user->save();
+
+
+          return response()->json([
+             'status' => 1,
+             'message' => "Information added successfully",
+             'data' => $user
+          ]);
+        }
+     }
+
+     public function Logout(REQUEST $request)
+     {
+        // Invalidate the token
+        JWTAuth::unsetToken();
+        return response()->json([
+           'status' => 0,
+           'message' => "Logout successful"
+        ]);
+     }
+  }
