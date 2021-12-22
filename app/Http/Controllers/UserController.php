@@ -96,7 +96,8 @@ class UserController extends Controller
          // send Email and SMS Notification
        		return response([
        			"message" => "registration successful",
-       			"status" => 1
+       			"status" => 1,
+               "user" => $user
        		], 201);
     	}
     }

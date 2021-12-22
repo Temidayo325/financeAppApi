@@ -33,7 +33,7 @@ class SendBothVerification
 
       //Send Email
       $verificationEmail = Verify::boot($event->user);
-      Email::sendHTML($event->user->email, $verificationEmail);
+      Email::sendHTML($event->user->email, $verificationEmail, "Almost there! Verify your account");
 
       //Send SMS
      $smsMessage = "Welcome to the ExpenseX platform! Your verification code is ".$event->user->verifyCode;
