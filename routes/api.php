@@ -8,6 +8,7 @@ use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\IncomeController;
 use App\Models\Expense;
 
 use App\Http\Middleware\JwtAuth;
@@ -51,6 +52,8 @@ Route::group([
    Route::post("/createfeedback", [FeedbackController::class, 'createfeedback']);
    Route::post("/AddDemographicInformatio", [UserController::class, 'AddDemographicInformatio']);
    Route::post("/Logout", [UserController::class, 'Logout']);
+   Route::get("/readIncome", [IncomeController::class, 'index']);
+   Route::post("/createIncome", [IncomeController::class, 'store']);
 });
 
 Route::fallback(function(){

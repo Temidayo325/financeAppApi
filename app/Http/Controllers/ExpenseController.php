@@ -9,11 +9,11 @@ use App\Models\Expense;
 use App\Models\User;
 
 use JWTAuth;
-use Tymon\JWTAuth\Exceptions\JWTException;
+// use Tymon\JWTAuth\Exceptions\JWTException;
 
 use App\Services\Sale;
 use App\Services\Paystack;
-use App\Services\ThirdParty;
+// use App\Services\ThirdParty;
 use App\Services\AuthorizationService;
 use App\Services\ExpenseService;
 
@@ -23,9 +23,16 @@ class ExpenseController extends Controller
 {
     public function ExpenseWithCard(Request $request)
     {
-        $check = $request->validate([
-          'reference' => 'required'
-        ]);
+            $check = Validator::make($request->all(), [
+                  'reference' => 'required'
+            ]);
+
+            if($check->fails()){
+                return response()->json([
+                    'status' => 0,
+                    'message' => $check->errors()->first()
+                    ]);
+            }
 
         //get the category_id
         $category_id = Category::where('category', $request->category)->first()->id;

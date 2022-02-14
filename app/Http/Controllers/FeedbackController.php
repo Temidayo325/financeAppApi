@@ -22,12 +22,12 @@ class FeedbackController extends Controller
          if ($feedback) {
             return response()->json([
                'status' => 1,
-               'message' => "Feedback taken successfully"
+               'message' => "Thank you for your feedback, we would get back to you soon"
             ]);
          }else{
             return response()->json([
                'status' => 0,
-               'message' => "Unable to take feedback"
+               'message' => "Unable to send feedback"
             ]);
          }
 
