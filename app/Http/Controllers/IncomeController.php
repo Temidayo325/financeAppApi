@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use JWTAuth;
 use Carbon\Carbon;
-
+use App\Http\Resources\IncomeResource;
 class IncomeController extends Controller
 {
     /**
@@ -31,11 +31,12 @@ class IncomeController extends Controller
                 ]);
             }
             $data = Income::where('user_token', $request->user_id)->whereBetween('created_at', [Carbon::createFromDate(null, null, 1), Carbon::now()])->get();
-            return response()->json([
-                    'status' => 1,
-                    'message' => 'Request Successful',
-                    'data' => $data 
-            ]);
+            // return response()->json([
+            //         'status' => 1,
+            //         'message' => 'Request Successful',
+            //         'data' => $data
+            // ]);
+            return  IncomeResource::collection($data);
         }else{
             return response()->json([
                 'status' => 0,
