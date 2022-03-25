@@ -48,6 +48,7 @@ Route::group([
    Route::get("/sortbetweenTwoDates", [ExpenseController::class, 'sortbetweenTwoDates']);
    Route::post("/initializeWithNewVendor", [PaymentController::class, 'initializeWithNewVendor']);
    Route::get("/getExpense", [ExpenseController::class, 'index']);
+   Route::get("/getExpenseOverview", [ExpenseController::class, 'Overview']);
    Route::get("/readCategory", [ExpenseController::class, 'readCategory']);
    Route::post("/createfeedback", [FeedbackController::class, 'createfeedback']);
    Route::post("/AddDemographicInformatio", [UserController::class, 'AddDemographicInformatio']);

@@ -25,7 +25,7 @@ class PasswordController extends Controller
             $user->save();
             // $user = User::where('email', $request->email)->first();
 
-            // event( new ResetPassword($user) );
+            event( new ResetPassword($user) );
 
             return response()->json([
                'status' => 1,

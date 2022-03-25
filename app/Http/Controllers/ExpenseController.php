@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Expense;
 use App\Models\User;
+use App\Models\Income;
 
 use JWTAuth;
+use Illuminate\Support\Facades\Validator;
 // use Tymon\JWTAuth\Exceptions\JWTException;
 
 use App\Services\Sale;
@@ -115,28 +117,80 @@ class ExpenseController extends Controller
     //      }
     //   }
     }
-    public function index(Request $request)
+    public function Overview(Request $request)
     {
-        if (JWTAuth::checkOrFail()) {
-           $check = $request->validate([
-             'user_id' => 'required|string'
-           ]);
-
-             $expense = Expense::where('user_token', $request->user_id)->get()->groupBy('category_id');
-            if ($expense) {
-               return response()->json([
-                 'message' => "Queried successfully",
-                 'status' => 1,
-                 'data' => $expense
-               ]);
-            }else{
+         if (JWTAuth::checkOrFail()) {
+            $checked = Validator::make($request->all(), [
+               'user_id' => 'string|exists:users,user_token'
+            ]);
+            if ($checked->fails()) {
                return response()->json([
                   'status' => 0,
-                  'message' => "You do not have any expenses recorded"
+                  'message' => $checked->errors()->first()
                ]);
             }
+            return response()->json([
+               'status' => 1,
+               'message' => "Retrieved successfully",
+               'expenses' => Expense::where('user_token', $request->user_id)
+                                     ->whereBetween('created_at', [Carbon::create(null, null, 1), Carbon::now()])
+                                     ->get()
+                                     ->sum('amount').'.00',
+               'income' => Income::where('user_token', $request->user_id)
+                                     ->whereBetween('created_at', [Carbon::create(null, null, 1), Carbon::now()])
+                                     ->get()
+                                     ->sum('money').'.00',
+                'categories' => Category::select('category')->get()
+            ]);
+         }else{
+            return response()->json([
+              'status' => 0,
+              'message' => "Invalid user"
+           ]);
+         }
+    }
+    public function getRecentExpenses(Request $request)
+    {
+        if (JWTAuth::checkOrFail()) {
+          $checked = Validator::make($request->all(), [
+              'user_id' => 'required|string'
+            ]);
+
+            if ($checked->fails()) {
+              return response()->json([
+                  'status' => 0,
+                  'message' => $checked->errors()->first(),
+                  'user' => $request
+              ]);
+            }
+            $expense = Expense::select('category', 'amount', 'created_at', 'description')
+                                ->where('user_token', $request->user_id)
+                                ->whereBetween('created_at', [Carbon::create(null, null, 1), Carbon::now()])
+                                ->orderBy('id', 'desc')
+                                ->get()
+                                ->map(function($item){
+                                    return [
+                                        'category' => $item->category,
+                                        'amount' => $item->amount,
+                                        'description' => $item->description,
+                                        'created_at' => Carbon::create($item->created_at)->diffForHumans()
+                                    ];
+            });
+            if ($expense) {
+              return response()->json([
+                 'message' => "Queried successfully",
+                 'status' => 1,
+                 'total' => $expense->sum('amount'),
+                 'data' => $expense
+              ]);
+            }else{
+              return response()->json([
+                  'status' => 0,
+                  'message' => "You do not have any expenses recorded"
+              ]);
+            }
         }else{
-           return response()->json([
+          return response()->json([
              'status' => 0,
              'message' => "Invalid user"
           ]);

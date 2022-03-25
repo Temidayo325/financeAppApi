@@ -15,7 +15,11 @@ use Tymon\JWTAuth\JWT;
 use JWTAuth;
 use App\Http\Resources\UserResource;
 
+use App\Templates\Verify;
+
 use App\Services\Utility;
+use App\Services\Email;
+use App\Services\Sms;
 
 use App\Events\UserRegistered;
 use App\Http\Resources\DemographicResource;
@@ -105,7 +109,12 @@ class UserController extends Controller
                'isVerified' => false
             ]);
             Auth::attempt(['email' => $request->email, 'password' => $request->password]);
-            // event( new UserRegistered($user) );
+              $verificationEmail = Verify::boot($user);
+              Email::sendHTML($user->email, $verificationEmail, "Almost there! Verify your account");
+
+              //Send SMS
+             $smsMessage = "Welcome to the ExpenseX platform! Your verification code is ".$user->verifyCode;
+             Sms::send($user->phone, $smsMessage);
          // send Email and SMS Notification
        		return  new UserResource($user);
         }
@@ -127,6 +136,9 @@ class UserController extends Controller
        if ( $verify) {
           $verify->isVerified = true;
           $verify->save();
+        //   $check = User::where('user_token', $request->user_id)->first();
+          event( new UserRegistered(User::where('user_token', $request->user_id)->first()) );
+
           return response()->json([
              'message' => "Hurray!! Account verified. Proceed to login to your account",
              'status' => 1
@@ -144,7 +156,7 @@ class UserController extends Controller
     {
             $check = Validator::make($request->all(), [
                 'user_id' => 'required|bail|string',
-                 'code' => 'required|numeric|integer'
+                 'code' => 'required|numeric'
             ]);
 
             if($check->fails()){
@@ -159,6 +171,7 @@ class UserController extends Controller
                 $verify = Verification::where('user_token', $request->user_id)->first();
                 $verify->isVerified = true;
                 $verify->save();
+                event( new UserRegistered($check) );
                 return response()->json([
                 'message' => "Hurray!! Account verified. Proceed to login to your account",
                 'status' => 1

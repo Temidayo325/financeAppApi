@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Income;
+use App\Models\Source;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use JWTAuth;
@@ -30,13 +31,26 @@ class IncomeController extends Controller
                     'message' => 'User is not recognized'
                 ]);
             }
-            $data = Income::where('user_token', $request->user_id)->whereBetween('created_at', [Carbon::createFromDate(null, null, 1), Carbon::now()])->get();
-            // return response()->json([
-            //         'status' => 1,
-            //         'message' => 'Request Successful',
-            //         'data' => $data
-            // ]);
-            return  IncomeResource::collection($data);
+            $data = Income::select('money', 'source', 'created_at')
+                            ->where('user_token', $request->user_id)
+                            ->whereBetween('created_at', [Carbon::createFromDate(null, null, 1), Carbon::now()])
+                            ->orderBy('id', 'desc')
+                            ->get()
+                            ->map(function($item){
+                                return [
+                                    'amount' => $item->money,
+                                    'create_at' => Carbon::create($item->created_at)->diffForHumans(),
+                                    'source' => $item->source
+                                ];
+            });
+
+            // return  IncomeResource::collection($data);
+            return response()->json([
+                'status' => 1,
+                'message' => "Income returned succesfully",
+                'total' => $data->sum('amount'),
+                'data' => $data
+            ]);
         }else{
             return response()->json([
                 'status' => 0,
@@ -63,9 +77,12 @@ class IncomeController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = Validator::make($request->all(), [
+        if (JWTAuth::checkOrFail())
+        {
+            $validated = Validator::make($request->all(), [
             'amount' => 'required|numeric|min:3',
-            'user_id' => 'required|bail|string'
+            'user_id' => 'required|bail|string',
+            'source' => 'required|bail|exists:sources,source'
         ]);
 
         if ($validated->fails())
@@ -78,14 +95,15 @@ class IncomeController extends Controller
         }
         $income = Income::create([
             'money' => $request->amount,
-            'user_token' => $request->user_id
+            'user_token' => $request->user_id,
+            'source' => $request->source
         ]);
         if($income)
         {
                 return response()->json([
                     'status' => 1,
                     'message'=> 'Income added Successfully',
-                    'data' => Income::where('user_token', $request->user_id)->whereBetween('created_at', [Carbon::createFromDate(null, null, 1), Carbon::now()])->get()
+                    // 'data' => Income::where('user_token', $request->user_id)->whereBetween('created_at', [Carbon::createFromDate(null, null, 1), Carbon::now()])->get()
                 ]);
         }else{
                 return response()->json([
@@ -93,6 +111,13 @@ class IncomeController extends Controller
                     'message'=> 'Unable to add income'
                 ]) ;
         }
+        }else{
+             return response()->json([
+                'status' => 0,
+                'message' => 'Invalid user'
+            ]);
+        }
+
     }
 
     /**
@@ -103,9 +128,43 @@ class IncomeController extends Controller
      */
     public function show(Income $income)
     {
-        //
+        if (JWTAuth::checkOrFail())
+        {
+            return response()->json([
+                    'status' => 1,
+                    'message' => 'Retrieved successfully',
+                    'data' => $income->select('source')->get()
+                ]);
+        }else{
+             return response()->json([
+                'status' => 0,
+                'message' => 'Invalid user'
+            ]);
+        }
     }
 
+     /**
+     * Display the available sources.
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function showSources(Request $request)
+    {
+        if (JWTAuth::checkOrFail())
+        {
+            return response()->json([
+                    'status' => 1,
+                    'message' => 'Retrieved successfully',
+                    'data' => Source::select('source')->get()
+                ]);
+        }else{
+             return response()->json([
+                'status' => 0,
+                'message' => 'Invalid user'
+            ]);
+        }
+    }
     /**
      * Show the form for editing the specified resource.
      *
