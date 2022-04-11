@@ -4,97 +4,181 @@
           <meta charset="utf-8">
           <title>ExpenseX</title>
           <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Patrick+Hand&display=swap" rel="stylesheet">
           <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+          <script src="{{ asset('js/app.js') }}" defer></script>
           <style>
              body {
-                 font-family: 'Nunito', sans-serif;
+                 font-family: 'Lato', sans-serif;
              }
          </style>
      </head>
      <body>
-          <header class="md:flex md:items-center md:justify-around md:bg-hero-bg md:bg-cover">
+          <div class="sticky top-0 md:my-2 md:py-5 md:px-16 md:mb-4 bg-white z-50">
+               <nav class="md:flex md:justify-between ">
+                    <h1 class="text-secondary leading-9 tracking-wide text-2xl font-bold"><a>ExpenseX</a></h1>
+                    <ul class="flex md:justify-end gap-4 text-lg">
+                         <li> <a href="#header">Home</a>  </li>
+                         <li> <a href="#about">About</a>  </li>
+                         <li> <a href="#blog">Blog</a>  </li>
+                         <li> <a href="#faq">FAQs</a>  </li>
+                         <li> <a href="#waitlist" class="md:bg-primary md:px-6 md:py-3 text-white rounded-full">JOIN OUR WAITLIST</a>  </li>
+                    </ul>
+               </nav>
+          </div>
+          <header class="md:flex md:items-center md:justify-between md:bg-hero-bg md:bg-cover h-screen overflow-hidden relative" id="header">
                <div class="md:ml-16">
-                    <h1 class="md:text-7xl leading-9 md:mb-3 font-bold text-primary">Your personal Financial Manager</h1>
-                    <h3 class="md:text-2xl leading-9 text-primary">Take charge of your finances and secure your future today with <span>ExpenseX</span></h3>
-                    <div class="md:border-2 md:border-primary md:rounded-full md:py-3 md:mt-6" >
-                         <input type="email" name="" value="" class="md:w-2/3 text-center text-2xl text-primary md:ml-10 py-2 focus:outline-0 focus:border-transparent border-transparent bg-transparent" placeholder="Enter your Email Address">
-                         <button type="button" name="button" class="bg-primary text-center text-white py-4 px-4 rounded-full text-xl ">JOIN THE WAITLIST</button>
+                    <h1 class="md:text-6xl leading-14 md:mb-3 font-bold text-black md:w-11/12 ">Your personal <span class="text-primary">Financial</span> Manager</h1>
+                    <h3 class="md:text-2xl leading-9 text-black">Take charge of your finances and secure your future today with <span>ExpenseX</span></h3>
+                    <div class="md:border-2 md:border-primary md:rounded-full md:py-3 md:mt-6 md:flex md:justify-between" >
+                         <input type="email" name="" value="" class="md:w-72 text-center text-2xl text-primary md:ml-10 py-2 focus:outline-0 focus:border-transparent border-transparent bg-transparent" placeholder="Enter your Email Address">
+                         <button type="button" name="button" class="bg-primary text-center text-white py-4 px-4 rounded-full text-xl mr-3">JOIN THE WAITLIST</button>
                     </div>
                </div>
-               <div class="md:ml-10">
-                    <img src="images/screen.svg" alt="" class=" md:w-auto">
+               <div class="md:ml-28 relative overflow-hidden md:w-8/12 md:h-4/6 z-20">
+                    <img src="images/hero-background.svg" alt="" class="z-0 md:w-auto md:w-6/12 md:ml-10">
+                    <img src="images/hero-upper.svg" alt="" class="z-20 md:w-auto absolute top-0 left-24 md:w-7/12">
                </div>
           </header>
-          <main class=" md:py-4 md:h-screen md:flex md:justify-center">
-               <div class="md:flex md:justify-center md:items-center md:my-3 md:py-3">
-                    <div class="md:w-2/6">
-                         <h1 class="md:text-4xl leading-9 md:my-6 font-bold text-primary">All about ExpenseX</h1>
-                         <p class=" leading-8 tracking-wide text-left text-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                         <div class="flex justify-center md:my-10">
-                              <button type="button" name="button" class=" bg-red-600 text-center text-white py-4 px-4 rounded-full text-xl ">Sign me up</button>
+          <main class=" md:py-24 md:h-screen" id="about">
+               <h1 class="text-primary md:text-2xl font-bold md:leading-10 md:tracking-wide md:text-center block">HOW DOES IT WORK?</h1>
+               <p class="md:text-center md:leading-9 md:my-4 md:text-2xl block md:tracking-wider md:w-6/12 mx-auto font">Find out how ExpenseX can help you achieve your financial goals. All you have to do is sign up and we'll guide you.</p>
+               <div class="md:flex md:justify-center">
+                    <div class="md:flex md:justify-start md:my-10">
+                         <div >
+                              <div class="bg-tertiary w-20 h-20 rounded-full flex justify-center items-center">
+                                   <img src="images/vector1.svg" alt="plan icon" class="w-10 h-10">
+                              </div>
+                              <h1 class="text-center md:text-2xl font-bold text-black md:my-4">PLAN</h1>
+                         </div>
+                         <div class="flex justify-start items-center mx-14 mb-16">
+                              <div class="md:w-2 md:h-2 md:rounded-full bg-primary"></div>
+                              <div class="md:w-48 md:h-1 bg-primary"></div>
+                              <div class="md:w-2 md:h-2 md:rounded-full bg-primary"></div>
+                         </div>
+                         <div >
+                              <div class="bg-tertiary w-20 h-20 rounded-full flex justify-center items-center">
+                                   <img src="images/vector2.svg" alt="plan icon" class="w-10 h-10">
+                              </div>
+                              <h1 class="text-center md:text-2xl font-bold text-black md:my-4">SAVE</h1>
+                         </div>
+                         <div class="flex justify-start items-center mx-14 mb-16">
+                              <div class="md:w-2 md:h-2 md:rounded-full bg-primary"></div>
+                              <div class="md:w-48 md:h-1 bg-primary"></div>
+                              <div class="md:w-2 md:h-2 md:rounded-full bg-primary"></div>
+                         </div>
+                         <div >
+                              <div class="bg-tertiary w-20 h-20 rounded-full flex justify-center items-center">
+                                   <img src="images/vector3.svg" alt="plan icon" class="w-10 h-10">
+                              </div>
+                              <h1 class="text-center md:text-2xl font-bold text-black md:my-4">INVEST</h1>
                          </div>
                     </div>
-                    <div class="md:w-2/6 md:h-64 md:ml-8">
-                         <img src="images/track.svg" alt="track your expenses" class="md:w-full md:h-full ">
-                    </div>
+               </div>
+               <div class="md:flex md:justify-center gap-24 md:w-8/12 md:mx-auto">
+                    <p class="text-xl leading-9 tracking-wide md:4/12 md:mx-4">Choose from our curated plans to help you manage your finances</p>
+                    <p class="text-xl leading-9 tracking-wide md:4/12 md:mx-4">Store up funds to buy that dream of yours and for emergencies</p>
+                    <p class="text-xl leading-9 tracking-wide md:2/12 md:mx-4">Find the best and trending opportunities to grow your wealth</p>
                </div>
           </main>
-          <section class=" md:py-4 md:h-screen md:flex md:justify-center md:bg-gray-100">
-               <div class="md:flex md:justify-center md:items-center md:my-3 md:py-3">
-                    <div class="md:w-2/6 md:h-72">
-                         <img src="images/checklist.svg" alt="track your expenses" class="md:w-full md:h-full ">
+          <section class=" md:py-0 md:h-screen" id="blog">
+               <h1 class="text-primary md:text-3xl font-bold md:leading-10 md:tracking-wide md:text-center block md:mb-14 md:mt-6">BLOG</h1>
+               <div class="md:flex md:justify-center md:items-center md:gap-24 md:w-10/12 md:mx-auto">
+                    <div class="overflow-hidden rounded md:w-72">
+                         <img src="images/freedom.jpg" alt="Image depicting the story of ExpenseX" class="md:w-full md:h-72 md:mb-4">
+                         <h2 class="text-2xl font-bold tracking-wide leading-10">ExpenseX: Our story</h2>
+                         <p class="block leading-9 text-xl">Out story starts like any other - With an idea. How do we achieve .....</p>
+                         <div class="flex justify-center">
+                              <a href="#" class="bg-primary py-2 px-6 text-white text-center my-3">Read more</a>
+                         </div>
                     </div>
-                    <div class="md:w-3/6 md:ml-10">
-                         <h1 class="md:text-4xl leading-9 md:my-6 font-bold text-primary">Why ExpenseX</h1>
-                         <ol class="text-lg">
-                              <li class="my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </li>
-                              <li class="my-3"> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                              <li class="my-3"> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
-                              <li class="my-3">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
-                              <li class="my-3"> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                         </ol>
-                         <div class="flex justify-center md:my-10">
-                              <button type="button" name="button" class=" bg-red-600 text-center text-white py-4 px-4 rounded-full text-xl ">JOIN THE WAITLIST</button>
+                    <div class="overflow-hidden rounded md:w-72">
+                         <img src="images/richest.jpg" alt="Richest man in Babylon image" class="md:w-full md:h-72 md:mb-4 rounded-md">
+                         <h2 class="text-2xl font-bold tracking-wide leading-10">The Richest man in Babylon: A review</h2>
+                         <p class="block leading-9 text-xl">A book lauded as one of the best financial .....</p>
+                         <div class="flex justify-center">
+                              <a href="#" class="bg-primary py-2 px-6 text-white text-center my-3">Read more</a>
+                         </div>
+                    </div>
+                    <div class="overflow-hidden rounded md:w-72">
+                         <img src="images/janitor.jpg" alt="The million dollar story" class="md:w-full md:h-72 md:mb-4 rounded-md">
+                         <h2 class="text-2xl font-bold tracking-wide leading-10">The Million dollar story</h2>
+                         <p class="block leading-9 text-xl">How did a Janitor die a millionaire? Let's talk  .....</p>
+                         <div class="flex justify-center">
+                              <a href="#" class="bg-primary py-2 px-6 text-white text-center my-3">Read more</a>
                          </div>
                     </div>
                </div>
           </section>
-          <article class=" md:py-4 md:h-screen md:bg-white">
-               <h1 class="md:text-4xl leading-9 text-center md:my-6 font-bold text-primary">Frequently asked questions</h1>
+          <article class=" md:py-0 md:h-screen md:py-12" id="faq">
+               <h1 class="text-primary md:text-2xl font-bold md:leading-10 md:tracking-wide md:text-center block">FREQUENTLY ASKED QUESTIONS</h1>
                <div class="md:w-3/6 md:mx-auto">
                     <ol class="border-2 border-gray-200 rounded-3xl py-4 tracking-wide leading-9 md:px-4 md:my-8">
-                         <p class="font-extrabold text-2xl mb-4 cursor-pointer togglep">What is ExpenseX</p>
-                         <p class="hidden word">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                         <p class="font-extrabold text-2xl mb-4 cursor-pointer togglep">How does ExpenseX work?</p>
+                         <p class="hidden word text-2xl text-black">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     </ol>
                     <ol class="border-2 border-gray-200 rounded-3xl py-4 tracking-wide leading-9 md:px-4 md:my-8">
-                         <p class="font-extrabold text-2xl mb-4 cursor-pointer togglep">What is ExpenseX</p>
-                         <p class="hidden word">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                         <p class="font-extrabold text-2xl mb-4 cursor-pointer togglep">What does ExpenseX do for me?</p>
+                         <p class="hidden word text-2xl text-black">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     </ol>
                     <ol class="border-2 border-gray-200 rounded-3xl py-4 tracking-wide leading-9 md:px-4 md:my-8">
-                         <p class="font-extrabold text-2xl mb-4 cursor-pointer togglep">What is ExpenseX</p>
-                         <p class="hidden word">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                         <p class="font-extrabold text-2xl mb-4 cursor-pointer togglep">When will ExpenseX be available?</p>
+                         <p class="hidden word text-2xl text-black">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     </ol>
                     <ol class="border-2 border-gray-200 rounded-3xl py-4 tracking-wide leading-9 md:px-4 md:my-8">
-                         <p class="font-extrabold text-2xl mb-4 cursor-pointer togglep">What is ExpenseX</p>
-                         <p class="hidden word">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                         <p class="font-extrabold text-2xl mb-4 cursor-pointer togglep">How do I become a beta-tester?</p>
+                         <p class="hidden word text-2xl text-black">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </ol>
+                    <ol class="border-2 border-gray-200 rounded-3xl py-4 tracking-wide leading-9 md:px-4 md:my-8">
+                         <p class="font-extrabold text-2xl mb-4 cursor-pointer togglep">Is ExpenseX a registered broker?</p>
+                         <p class="hidden word text-2xl text-black">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     </ol>
                </div>
           </article>
-          <footer class="md:bg-primary md:py-12 md:pl-40">
-               <div class="md:flex md:justify-start md:items-start">
-                    <p class="text-gray-100 text-2xl">&copy ExpenseX 2022</p>
-                    <nav class="text-gray-100 tracking-wide leading-9 text-lg md:ml-14">
-                         <h3 class="font-bold">Socials</h3>
-                         <ul>
-                              <li><a href="https://www.instagram.com/lumina_ace/" target="_blank" >Instagram</a></li>
-                              <li><a href="">Twitter</a></li>
-                              <li><a href="">Facebook</a></li>
-                         </ul>
-                    </nav>
+          <section class=" md:py-0 mb-20 md:py-16" id="waitlist">
+               <h1 class="text-primary md:text-2xl font-bold md:leading-10 md:tracking-wide md:text-center block">WHAT ARE YOU WAITING FOR?</h1>
+               <p class="md:text-center md:leading-9 md:my-4 md:text-xl block md:tracking-wider md:w-6/12 mx-auto font-bold">Join the waitlist and get early access to our products and services.</p>
+               <div class="md:w-4/12 md:mx-auto md:my-3">
+                    <p class="status text-center text-xl font-bold text-green"></p>
+                    <form class="" method="post" >
+                         <div class="mt-2">
+                              <label for="name" class="text-xl text-black leading-9 tracking-wide block font-bold mb-2">Name</label>
+                              <p class="text-lg text-red-600 text-left py-2 name-failure"></p>
+                              <input type="text" name="name" value="" placeholder="Enter your name" class="block py-2 px-3 text-xl border-2 border-primary font-bold text-primary md:w-full rounded-2xl" id="name" required>
+                         </div>
+                         <div class="my-3">
+                              <label for="email" class="text-xl text-black leading-9 tracking-wide block font-bold mb-2">Email Address</label>
+                              <p class="text-md text-red-600 text-left py-2 email-failure"></p>
+                              <input type="email" name="email" value="" placeholder="Enter your email address" class="block py-2 px-3 text-xl border-2 border-primary font-bold text-primary md:w-full rounded-2xl" required id="email">
+                         </div>
+                         <div class="flex justify-center my-8">
+                              <button type="button" name="button" class="text-center rounded-md px-10 py-2 bg-primary text-white leading-10 tracking-wider text-xl" id="submit">JOIN OUR WAITLIST</button>
+                         </div>
+                    </form>
                </div>
-               <div class="md:border-2 md:border-gray-400 md:rounded-full md:py-3 md:mt-6 md:w-3/6" >
-                    <input type="email" name="" value="" class="md:w-2/3 text-center text-2xl text-gray-100 md:ml-2 py-2 focus:outline-0 focus:border-transparent border-transparent bg-transparent" placeholder="Enter your Email Address">
-                    <button type="button" name="button" class="bg-red-600 text-center text-gray-100 py-4 px-4 rounded-full text-xl ">JOIN THE WAITLIST</button>
+          </section>
+          <footer class="md:bg-primary md:py-6">
+               <div class="md:flex md:justify-between md:items-start md:w-8/12 md:mx-auto">
+                    <p class="text-white text-xl">&copy 2022 Lumina Ace</p>
+                    <div class="flex justify-end items-center flex-row-reverse gap-5">
+                         <a href="https://www.instagram.com/lumina_ace/" target="_blank" >
+                              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="h-8 w-8 fill-white "version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 56.7 56.7" enable-background="new 0 0 56.7 56.7" xml:space="preserve"><g><path d="M28.2,16.7c-7,0-12.8,5.7-12.8,12.8s5.7,12.8,12.8,12.8S41,36.5,41,29.5S35.2,16.7,28.2,16.7z M28.2,37.7   c-4.5,0-8.2-3.7-8.2-8.2s3.7-8.2,8.2-8.2s8.2,3.7,8.2,8.2S32.7,37.7,28.2,37.7z"/>
+                         	<circle cx="41.5" cy="16.4" r="2.9"/>
+                         	<path d="M49,8.9c-2.6-2.7-6.3-4.1-10.5-4.1H17.9c-8.7,0-14.5,5.8-14.5,14.5v20.5c0,4.3,1.4,8,4.2,10.7c2.7,2.6,6.3,3.9,10.4,3.9   h20.4c4.3,0,7.9-1.4,10.5-3.9c2.7-2.6,4.1-6.3,4.1-10.6V19.3C53,15.1,51.6,11.5,49,8.9z M48.6,39.9c0,3.1-1.1,5.6-2.9,7.3   s-4.3,2.6-7.3,2.6H18c-3,0-5.5-0.9-7.3-2.6C8.9,45.4,8,42.9,8,39.8V19.3c0-3,0.9-5.5,2.7-7.3c1.7-1.7,4.3-2.6,7.3-2.6h20.6   c3,0,5.5,0.9,7.3,2.7c1.7,1.8,2.7,4.3,2.7,7.2V39.9L48.6,39.9z"/>
+                              </g>
+                              </svg>
+                         </a>
+                         <a href="https://twitter.com/ace_lumina?t=baukixMjuhJG4CxMHTGwjQ&s=09" target="_blank" >
+                              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="h-8 w-8 fill-white" enable-background="new 0 0 56.693 56.693" height="56.693px" id="Layer_1" version="1.1" viewBox="0 0 56.693 56.693" width="56.693px" xml:space="preserve"><path d="M52.837,15.065c-1.811,0.805-3.76,1.348-5.805,1.591c2.088-1.25,3.689-3.23,4.444-5.592c-1.953,1.159-4.115,2-6.418,2.454  c-1.843-1.964-4.47-3.192-7.377-3.192c-5.581,0-10.106,4.525-10.106,10.107c0,0.791,0.089,1.562,0.262,2.303  c-8.4-0.422-15.848-4.445-20.833-10.56c-0.87,1.492-1.368,3.228-1.368,5.082c0,3.506,1.784,6.6,4.496,8.412  c-1.656-0.053-3.215-0.508-4.578-1.265c-0.001,0.042-0.001,0.085-0.001,0.128c0,4.896,3.484,8.98,8.108,9.91  c-0.848,0.23-1.741,0.354-2.663,0.354c-0.652,0-1.285-0.063-1.902-0.182c1.287,4.015,5.019,6.938,9.441,7.019  c-3.459,2.711-7.816,4.327-12.552,4.327c-0.815,0-1.62-0.048-2.411-0.142c4.474,2.869,9.786,4.541,15.493,4.541  c18.591,0,28.756-15.4,28.756-28.756c0-0.438-0.009-0.875-0.028-1.309C49.769,18.873,51.483,17.092,52.837,15.065z"/>
+                              </svg>
+                         </a>
+                         <a href="https://medium.com/@antoine.lame/whats-new-in-laravel-november-edition-a114be864adf" target="_blank" >
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 fill-white" xmlns:serif="http://www.serif.com/" xmlns:xlink="http://www.w3.org/1999/xlink" height="100%" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" version="1.1" viewBox="0 0 1151 1151" width="100%" xml:space="preserve"><g transform="matrix(1,0,0,1,-246.226,-1.33631)"><path d="M883.45,576.26C883.45,739.93 751.67,872.61 589.12,872.61C426.57,872.61 294.78,739.93 294.78,576.26C294.78,412.59 426.56,279.9 589.12,279.9C751.68,279.9 883.45,412.59 883.45,576.26" style="fill-rule:nonzero;"/></g><g transform="matrix(1,0,0,1,-246.226,-1.33631)"><path d="M1206.34,576.26C1206.34,730.32 1140.45,855.26 1059.17,855.26C977.89,855.26 912,730.32 912,576.26C912,422.2 977.88,297.26 1059.16,297.26C1140.44,297.26 1206.33,422.16 1206.33,576.26" style="fill-rule:nonzero;"/></g><g transform="matrix(1,0,0,1,-246.226,-1.33631)"><path d="M1338.41,576.26C1338.41,714.26 1315.24,826.2 1286.65,826.2C1258.06,826.2 1234.9,714.29 1234.9,576.26C1234.9,438.23 1258.07,326.32 1286.65,326.32C1315.23,326.32 1338.41,438.22 1338.41,576.26" style="fill-rule:nonzero;"/></g><g transform="matrix(1,0,0,1,-246.226,-1.33631)"><path d="M1633.77,0L1337.48,0L1337.48,0.25L296.29,0.25L296.29,0L-0,0L-0,1150.07L119.51,1150.07L119.51,1150.51L1529.92,1150.51L1529.92,1150.07L1633.77,1150.07L1633.77,0ZM1337.48,296.54L1337.48,854.21L296.29,854.21L296.29,296.54L1337.48,296.54Z" style="fill:none;fill-rule:nonzero;"/></g>
+                              </svg>
+                         </a>
+                    </div>
                </div>
           </footer>
      </body>
@@ -107,5 +191,27 @@
                          hiddenP[index].classList.toggle("hidden")
                     })
                });
+
+          document.querySelector('#submit').addEventListener('click', () => {
+               console.info("I am clicking")
+               let name = document.querySelector('#name').value
+               let email = document.querySelector('#email').value
+               if (name !== '' && name !== undefined && name.length >= 4) {
+                    if (email !== '' && email !== undefined && email.length > 9) {
+                         // send axios request
+                         axios.post('/register', {name: name, mail: email})
+                              .then( (res) => {
+                                    console.log(res.data)
+                                    alert(res.data.message)
+                               })
+                              .catch(err => console.log(err));
+                    }else{
+                         document.querySelector('.email-failure').innerHTML = 'Invalid Email: Enter a valid Email Address'
+                    }
+               }else{
+                    document.querySelector('.name-failure').innerHTML = 'Invalid name: Enter a valid name'
+                    console.info(name)
+               }
+          })
      </script>
 </html>

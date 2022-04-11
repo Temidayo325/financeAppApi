@@ -34,6 +34,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
    Route::post("/autoVerify", [UserController::class, "autoVerify"]);
    Route::post("/verifyUser", [UserController::class, 'verifyUser']);
    Route::post("/reset", [PasswordController::class, 'reset']);
+   Route::post("/changePassword", [PasswordController::class, 'changePassword']);
 // });
 
 // All routes require Authorization token after login
@@ -41,7 +42,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group([
    'middleware' => 'jwt.auth'
 ], function ($router){
-   Route::post("/changePassword", [PasswordController::class, 'changePassword']);
    Route::post("/ExpenseWithCard", [ExpenseController::class, 'ExpenseWithCard']);
    Route::post("/ExpenseWithCash", [ExpenseController::class, 'ExpenseWithCash']);
    Route::get("/sortByDateBetweenNowAndDate", [ExpenseController::class, 'sortByDateBetweenNowAndDate']);

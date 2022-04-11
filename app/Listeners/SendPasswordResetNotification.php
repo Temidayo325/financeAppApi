@@ -8,6 +8,7 @@ use Illuminate\Queue\InteractsWithQueue;
 
 use App\Services\Sms;
 use App\Services\Email;
+use App\Mail\ForgotPasswordMail;
 
 class SendPasswordResetNotification
 {
@@ -29,12 +30,9 @@ class SendPasswordResetNotification
      */
     public function handle(ResetPassword $event)
     {
-      //Send SMS
-      $smsMessage = "Hey ".$event->user->name." the code is  ".$event->user->verifyCode;
-      Sms::send($event->user->phone, $smsMessage);
-
-      //Send Email
-      $message = "Hey ".$event->user->email . " </br>Seems you forgot your password. Your recovery password is ".$event->user->verifyCode;
-      Email::send($event->user->email, $message);
+     // //Send Email
+     //  $message = "Hey ".$event->user->email . " </br>Seems you forgot your password. Your recovery password is ".$event->user->verifyCode;
+     //  Email::send($event->user->email, $message);
+      $sendMail = Mail::to($event->user->email)->send(new VerificationMail($event->user));
     }
 }

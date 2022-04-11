@@ -23,7 +23,8 @@ class PasswordController extends Controller
             $code = Utility::generateInteger(6);
             $user->verifyCode = $code;
             $user->save();
-            // $user = User::where('email', $request->email)->first();
+
+            $user = User::where('email', $request->email)->first();
 
             event( new ResetPassword($user) );
 
@@ -44,7 +45,7 @@ class PasswordController extends Controller
           $validate = $request->validate([
              'password' => 'required',
              'password2' => 'required',
-             'user_id' => 'required|email'
+             'user_id' => 'required|string'
           ]);
            $user = User::where('user_token', $request->user_id)->first();
            if ($user) {

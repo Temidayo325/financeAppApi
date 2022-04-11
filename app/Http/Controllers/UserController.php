@@ -21,6 +21,7 @@ use App\Services\Utility;
 use App\Services\Email;
 use App\Services\Sms;
 
+use App\Mail\VerificationMail;
 use App\Events\UserRegistered;
 use App\Http\Resources\DemographicResource;
 
@@ -40,7 +41,7 @@ class UserController extends Controller
     {
       $check = Validator::make($request->all(), [
           'email' => 'required|email|min:8|bail',
-         'password' => 'required'
+          'password' => 'required'
       ]);
 
       if($check->fails()){
@@ -109,13 +110,10 @@ class UserController extends Controller
                'isVerified' => false
             ]);
             Auth::attempt(['email' => $request->email, 'password' => $request->password]);
-              $verificationEmail = Verify::boot($user);
-              Email::sendHTML($user->email, $verificationEmail, "Almost there! Verify your account");
-
+              $sendMail = Mail::to($request->email)->send(new VerificationMail($user));
               //Send SMS
-             $smsMessage = "Welcome to the ExpenseX platform! Your verification code is ".$user->verifyCode;
-             Sms::send($user->phone, $smsMessage);
-         // send Email and SMS Notification
+
+             // send Email and SMS Notification
        		return  new UserResource($user);
         }
     }
@@ -136,7 +134,7 @@ class UserController extends Controller
        if ( $verify) {
           $verify->isVerified = true;
           $verify->save();
-        //   $check = User::where('user_token', $request->user_id)->first();
+          // $check = User::where('user_token', $request->user_id)->first();
           event( new UserRegistered(User::where('user_token', $request->user_id)->first()) );
 
           return response()->json([
@@ -163,19 +161,27 @@ class UserController extends Controller
                 return response()->json([
                     'status' => 0,
                     'message' => $check->errors()->first()
-                    ]);
+               ]);
             }
 
             $check = User::where('user_token', $request->user_id)->first();
             if ( $check->verifyCode == $request->code) {
                 $verify = Verification::where('user_token', $request->user_id)->first();
-                $verify->isVerified = true;
+
+                if ($verify->isVerified) {
+                     return response()->json([
+                          'message' => "Account successfully initiated. Continue to change your password",
+                          'status' => 1
+                     ]);
+                }
+                $verify->isVerified  = true;
                 $verify->save();
                 event( new UserRegistered($check) );
                 return response()->json([
-                'message' => "Hurray!! Account verified. Proceed to login to your account",
-                'status' => 1
+                     'message' => "Hurray! Your Account has been verified. Continue to login to your account",
+                     'status' => 1
                 ]);
+
       }else{
          return response()->json([
            'message' => "Ooops! The passcode is incorrect",
