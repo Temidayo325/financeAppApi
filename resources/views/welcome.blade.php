@@ -91,7 +91,7 @@
                          <h2 class="text-2xl font-bold tracking-wide leading-10">ExpenseX: Our story</h2>
                          <p class="block leading-9 text-xl">Out story starts like any other - With an idea. How do we achieve .....</p>
                          <div class="flex justify-center">
-                              <a href="#" class="bg-primary py-2 px-6 text-white text-center my-3">Read more</a>
+                              <a href="#" class="bg-primary py-2 px-6 text-white text-center my-3  w-full">Read more</a>
                          </div>
                     </div>
                     <div class="overflow-hidden rounded md:w-72">
@@ -99,7 +99,7 @@
                          <h2 class="text-2xl font-bold tracking-wide leading-10">The Richest man in Babylon: A review</h2>
                          <p class="block leading-9 text-xl">A book lauded as one of the best financial .....</p>
                          <div class="flex justify-center">
-                              <a href="#" class="bg-primary py-2 px-6 text-white text-center my-3">Read more</a>
+                              <a href="#" class="bg-primary py-2 px-6 text-white text-center my-3  w-full">Read more</a>
                          </div>
                     </div>
                     <div class="overflow-hidden rounded md:w-72">
@@ -107,7 +107,7 @@
                          <h2 class="text-2xl font-bold tracking-wide leading-10">The Million dollar story</h2>
                          <p class="block leading-9 text-xl">How did a Janitor die a millionaire? Let's talk  .....</p>
                          <div class="flex justify-center">
-                              <a href="#" class="bg-primary py-2 px-6 text-white text-center my-3">Read more</a>
+                              <a href="#" class="bg-primary py-2 px-6 text-white text-center my-3 w-full">Read more</a>
                          </div>
                     </div>
                </div>
@@ -163,6 +163,7 @@
                <div class="md:flex md:justify-between md:items-start md:w-8/12 md:mx-auto">
                     <p class="text-white text-xl">&copy 2022 Lumina Ace</p>
                     <div class="flex justify-end items-center flex-row-reverse gap-5">
+                         <a href="/privacy" class="text-white text-xl">Privacy policy</a>
                          <a href="https://www.instagram.com/lumina_ace/" target="_blank" >
                               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="h-8 w-8 fill-white "version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 56.7 56.7" enable-background="new 0 0 56.7 56.7" xml:space="preserve"><g><path d="M28.2,16.7c-7,0-12.8,5.7-12.8,12.8s5.7,12.8,12.8,12.8S41,36.5,41,29.5S35.2,16.7,28.2,16.7z M28.2,37.7   c-4.5,0-8.2-3.7-8.2-8.2s3.7-8.2,8.2-8.2s8.2,3.7,8.2,8.2S32.7,37.7,28.2,37.7z"/>
                          	<circle cx="41.5" cy="16.4" r="2.9"/>

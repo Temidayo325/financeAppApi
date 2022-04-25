@@ -16,4 +16,7 @@ use App\Http\Controllers\WaitlistController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/privacy', function () {
+    return view('privacy');
+});
 Route::post("/register", [WaitlistController::class, 'register']);
