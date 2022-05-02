@@ -16,7 +16,7 @@ use JWTAuth;
 use App\Http\Resources\UserResource;
 
 use App\Templates\Verify;
-
+use Illuminate\Support\Facades\Mail;
 use App\Services\Utility;
 use App\Services\Email;
 use App\Services\Sms;
@@ -110,7 +110,7 @@ class UserController extends Controller
                'isVerified' => false
             ]);
             Auth::attempt(['email' => $request->email, 'password' => $request->password]);
-              $sendMail = Mail::to($request->email)->send(new VerificationMail($user));
+            $sendMail = Mail::to($request->email)->send(new VerificationMail($user));
               //Send SMS
 
              // send Email and SMS Notification

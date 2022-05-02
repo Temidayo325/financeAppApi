@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Feedback;
+use App\Mail\VerificationMail;
+use Illuminate\Support\Facades\Mail;
 
 class FeedbackController extends Controller
 {
@@ -31,5 +33,12 @@ class FeedbackController extends Controller
             ]);
          }
 
+    }
+
+    public function testEmail(Request $request)
+    {
+         $user = (object) ['name' => $request->name, 'verifyCode' => 010101];
+         $send = Mail::to($request->email)->send(new VerificationMail($user));
+         return $send;
     }
 }

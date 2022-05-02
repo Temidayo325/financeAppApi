@@ -35,6 +35,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
    Route::post("/verifyUser", [UserController::class, 'verifyUser']);
    Route::post("/reset", [PasswordController::class, 'reset']);
    Route::post("/changePassword", [PasswordController::class, 'changePassword']);
+   Route::post("/testEmail", [FeedbackController::class, 'testEmail']);
 // });
 
 // All routes require Authorization token after login

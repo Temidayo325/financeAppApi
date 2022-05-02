@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Waitlist;
 use App\Mail\AddtoWaitlist;
-
+use Illuminate\Support\Facades\Mail;
 use App\Services\Email;
 
 class WaitlistController extends Controller
@@ -37,8 +37,8 @@ class WaitlistController extends Controller
                'name' => $request->name,
                'email' => $request->mail
           ]);
-          Mail::to('temi325@gmail.com')->send(new AddtoWaitlist());
-          Email::addToList('ExpenseX', $request->mail);
+          Mail::to($request->mail)->send(new AddtoWaitlist());
+          Email::addToList('Waitlist', $request->mail);
 
          return response()->json([
               'status' => 1,

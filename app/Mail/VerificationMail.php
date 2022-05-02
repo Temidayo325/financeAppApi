@@ -17,7 +17,7 @@ class VerificationMail extends Mailable
      * @return void
      */
     public $user;
-    public function __construct(User $user)
+    public function __construct($user)
     {
         $this->user = $user;
     }

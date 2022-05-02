@@ -9,7 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use App\Services\Sms;
 use App\Services\Email;
 use App\Mail\ForgotPasswordMail;
-
+use Illuminate\Support\Facades\Mail;
 class SendPasswordResetNotification
 {
     /**

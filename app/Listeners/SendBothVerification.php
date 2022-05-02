@@ -9,7 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use App\Templates\Verify;
 use App\Services\Sms;
 use App\Services\Email;
-
+use Illuminate\Support\Facades\Mail;
 class SendBothVerification
 {
     /**
