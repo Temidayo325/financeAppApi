@@ -17,9 +17,9 @@
          </style>
      </head>
      <body class="">
-          <div class="sticky top-0 my-2 md:py-3 md:px-16 bg-white z-50 px-5 md:px-0 z-10">
+          <div class="sticky top-0 my-2 md:py-3 md:px-16 bg-white px-5 z-50 md:px-0  md:z-0">
                <nav class="flex justify-between relative">
-                    <h1 class="text-secondary leading-9 tracking-wide text-2xl font-bold"><a>ExpenseX</a></h1>
+                    <h1 class="text-secondary leading-9 tracking-wide text-2xl font-bold ml-10"><a>ExpenseX</a></h1>
                     <img src="images/menu.svg" alt="menu" title="menu by icon8" class="md:hidden w-8 h-8 menu">
                     <ul class="w-screen h-screen bg-blue-200 navigation-links-wrapper text-lg fixed z-20 top-0 py-12 left-0 hidden animate__animated animate__slideInRight animate__faster">
                          <li class="cursor-pointer text-3xl font-bold my-6 flex justify-end mr-12">
@@ -39,7 +39,7 @@
                     </ul>
                </nav>
           </div>
-          <header class="md:flex md:items-center md:justify-between md:bg-hero-bg md:bg-cover md:h-screen overflow-hidden relative px-5 md:px-0" id="header">
+          <header class="md:flex md:items-center md:justify-between md:h-screen overflow-hidden relative px-5 md:px-0" id="header">
                <div class="md:ml-16 mt-8">
                     <h1 class="md:text-6xl text-3xl text-center md:text-left leading-14 md:mb-3 font-bold text-black md:w-11/12 ">Your personal <span class="text-primary">Financial</span> Manager</h1>
                     <h3 class="md:text-2xl text-md font-bold text-center md:text-left mt-2 md:mt-0 leading-7 text-black">Take charge of your finances and secure your future today with <span>ExpenseX</span></h3>
@@ -48,9 +48,9 @@
                          <a href="#waitlist"  class="bg-primary text-center text-white py-2 w-full md:py-4 px-4 rounded-lg md:rounded-full text-md md:text-xl mr-3 join">JOIN THE WAITLIST</a>
                     </div>
                </div>
-               <div class="hidden md:block md:ml-28 md:relative md:overflow-hidden md:w-8/12 md:h-4/6 z-20">
+               <div class="hidden md:block md:ml-28 md:relative md:overflow-hidden md:w-8/12 md:h-4/6 z-20 md:z-0">
                     <img src="images/hero-background.svg" alt="" class="z-0 md:w-auto md:w-6/12 md:ml-9 md:h-3/4">
-                    <img src="images/hero-upper.svg" alt="" class="z-20 md:w-auto absolute top-0 left-24 md:w-7/12">
+                    <img src="images/hero-upper.svg" alt="" class="z-20 md:z-0 md:w-auto absolute top-0 left-24 md:w-7/12">
                </div>
           </header>
           <main class=" md:py-24 md:h-screen mt-14 md:mt-0 px-5 md:px-0" id="about">
@@ -124,8 +124,8 @@
                          <img src="images/freedom.jpg" alt="Image depicting the story of ExpenseX" class="md:w-full md:h-72 md:mb-4">
                          <h2 class="md:text-2xl text-xl font-bold tracking-wide leading-9 text-center md:text-left">ExpenseX: Our story</h2>
                          <p class="block leading-9 text-lg md:text-xl px-1 md:px-0">Out story starts like any other - With an idea. How do we achieve .....</p>
-                         <div class="flex justify-center">
-                              <a href="#" class="bg-primary py-2 px-6 text-white text-center md:my-3  w-full">Read more</a>
+                         <div class="flex justify-center mt-8">
+                              <a href="#" class="bg-primary py-2 px-6 text-white text-center  w-full rounded-md">Read more</a>
                          </div>
                     </div>
                     <div class="md:overflow-hidden md:rounded md:w-72 shadow-md mt-14 md:shadow-none">
@@ -133,7 +133,7 @@
                          <h2 class="text-xl text-center md:text-left md:text-2xl font-bold tracking-wide leading-9">The Richest man in Babylon: A review</h2>
                          <p class="block leading-9 text-lg md:text-xl px-1 md:px-0">A book lauded as one of the best financial .....</p>
                          <div class="flex justify-center">
-                              <a href="#" class="bg-primary py-2 px-6 text-white text-center md:my-3  w-full">Read more</a>
+                              <a href="#" class="bg-primary py-2 px-6 text-white text-center md:my-3  w-full rounded-md">Read more</a>
                          </div>
                     </div>
                     <div class="md:overflow-hidden md:rounded md:w-72 shadow-md mt-14 md:shadow-none">
@@ -141,7 +141,7 @@
                          <h2 class="text-center md:text-left text-xl md:text-2xl font-bold tracking-wide leading-10 md:py-2">The Million dollar story</h2>
                          <p class="block leading-9 md:text-xl text-lg md:py-2 px-1 md:px-0">How did a Janitor die a millionaire? Let's talk  .....</p>
                          <div class="flex justify-center">
-                              <a href="#" class="bg-primary py-2 px-6 text-white text-center md:my-3 w-full">Read more</a>
+                              <a href="#" class="bg-primary py-2 px-6 text-white text-center md:my-3 w-full rounded-md">Read more</a>
                          </div>
                     </div>
                </div>
@@ -150,23 +150,23 @@
                <h1 class="text-primary md:text-2xl font-bold md:leading-10 md:tracking-wide text-center block text-xl my-2 md:my-0">FREQUENTLY ASKED QUESTIONS</h1>
                <div class="md:w-3/6 md:mx-auto">
                     <ol class="border-2 border-gray-200 rounded-3xl py-4 tracking-wide leading-9 md:px-4 md:my-8 my-6 px-2">
-                         <p class="md:font-extrabold font-bold text-lg md:text-2xl mb-4 cursor-pointer togglep">How does ExpenseX work? <span><img src="images/dropdown-icon.svg" alt="" class="w-5 h-5 inline mx-1"></span></p>
+                         <p class="md:font-extrabold font-bold text-md md:text-2xl  pr-8  mb-4 cursor-pointer togglep relative">How does ExpenseX work? <span><img src="images/dropdown-icon.svg" alt="" class="w-5 h-5 inline mx-1 absolute right-0 top-2"></span></p>
                          <p class="hidden word md:text-2xl text-black text-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     </ol>
                     <ol class="border-2 border-gray-200 rounded-3xl py-4 tracking-wide leading-9 md:px-4 md:my-8 my-6 px-2">
-                         <p class="md:font-extrabold font-bold text-lg md:text-2xl mb-4 cursor-pointer togglep">What does ExpenseX do for me?<span><img src="images/dropdown-icon.svg" alt="" class="w-5 h-5 inline mx-1"></span></p>
+                         <p class="md:font-extrabold font-bold text-md  pr-8  md:text-2xl mb-4 cursor-pointer togglep relative">What does ExpenseX do for me?<span><img src="images/dropdown-icon.svg" alt="" class="w-5 h-5 inline mx-1 absolute right-0 top-2"></span></p>
                          <p class="hidden word md:text-2xl text-black text-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     </ol>
                     <ol class="border-2 border-gray-200 rounded-3xl py-4 tracking-wide leading-9 md:px-4 md:my-8 my-6 px-2">
-                         <p class="md:font-extrabold font-bold text-lg md:text-2xl mb-4 cursor-pointer togglep">When will ExpenseX be available?<span><img src="images/dropdown-icon.svg" alt="" class="w-5 h-5 inline mx-1"></span></p>
+                         <p class="md:font-extrabold font-bold text-md  pr-8  md:text-2xl mb-4 cursor-pointer togglep relative">When will ExpenseX be available?<span><img src="images/dropdown-icon.svg" alt="" class="w-5 h-5 inline mx-1 absolute right-0 top-2"></span></p>
                          <p class="hidden word md:text-2xl text-black text-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     </ol>
                     <ol class="border-2 border-gray-200 rounded-3xl py-4 tracking-wide leading-9 md:px-4 md:my-8 my-6 px-2">
-                         <p class="md:font-extrabold font-bold text-lg md:text-2xl mb-4 cursor-pointer togglep">How do I become a beta-tester?<span><img src="images/dropdown-icon.svg" alt="" class="w-5 h-5 inline mx-1"></span></p>
+                         <p class="md:font-extrabold font-bold text-md  pr-8  md:text-2xl mb-4 cursor-pointer togglep relative">How do I become a beta-tester?<span><img src="images/dropdown-icon.svg" alt="" class="w-5 h-5 inline mx-1 absolute right-0 top-2"></span></p>
                          <p class="hidden word md:text-2xl text-black text-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     </ol>
                     <ol class="border-2 border-gray-200 rounded-3xl py-4 tracking-wide leading-9 md:px-4 md:my-8 my-6 px-2">
-                         <p class="md:font-extrabold font-bold text-lg md:text-2xl mb-4 cursor-pointer togglep">Is ExpenseX a registered broker?<span><img src="images/dropdown-icon.svg" alt="" class="w-5 h-5 inline mx-1"></span></p>
+                         <p class="md:font-extrabold font-bold text-md pr-8 md:text-2xl mb-4 cursor-pointer togglep relative">Is ExpenseX a registered broker?<span><img src="images/dropdown-icon.svg" alt="" class="w-5 h-5 inline mx-1 absolute right-0 top-2"></span></p>
                          <p class="hidden word md:text-2xl text-black text-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     </ol>
                </div>
